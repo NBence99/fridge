@@ -1,4 +1,4 @@
-package org.example.repistory;
+package org.example.repository;
 
 import org.example.entity.ProductEntity;
 import org.springframework.data.repository.CrudRepository;

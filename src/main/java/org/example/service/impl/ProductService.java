@@ -1,7 +1,7 @@
 package org.example.service.impl;
 
 import org.example.entity.ProductEntity;
-import org.example.repistory.IProductRepository;
+import org.example.repository.IProductRepository;
 import org.example.request.ProductRequest;
 import org.example.service.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,8 +29,11 @@ public class ProductService implements IProductService {
     }
 
     @Override
-    public ProductEntity updateProduct(Long id, ProductRequest userRequest) {
-        return null;
+    public ProductEntity updateProduct(Long id, ProductRequest productRequest) {
+        ProductEntity productEntity = productRepository.findById(id).orElseThrow();
+        productEntity.setName(productRequest.getName());
+        productEntity.setPiece(productRequest.getPiece());
+        return productRepository.save(productEntity);
     }
 
     @Override

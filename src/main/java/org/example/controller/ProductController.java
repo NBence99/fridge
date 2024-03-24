@@ -1,4 +1,5 @@
 package org.example.controller;
+import jakarta.validation.Valid;
 import org.example.entity.ProductEntity;
 import org.example.request.ProductRequest;
 import org.example.service.IProductService;
@@ -12,7 +13,7 @@ public class ProductController {
     private IProductService productService;
 
     @PostMapping("/product")
-    public ProductEntity saveProduct(@RequestBody ProductRequest request) {
+    public ProductEntity saveProduct(@RequestBody @Valid ProductRequest request) {
         return productService.saveProduct(request);
     }
 
@@ -22,7 +23,7 @@ public class ProductController {
     }
 
     @PutMapping("/product/{id}")
-    public ProductEntity updateProduct(@PathVariable("id") Long id,@RequestBody ProductRequest request){
+    public ProductEntity updateProduct(@PathVariable("id") Long id,@RequestBody @Valid ProductRequest request){
         return productService.updateProduct(id,request);
     }
 
